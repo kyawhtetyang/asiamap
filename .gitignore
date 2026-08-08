@@ -1,7 +1,7 @@
-node_modules/
-dist/
 .DS_Store
-*.tsbuildinfo
-vite.config.js
-vite.config.d.ts
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+sanity/node_modules/
+sanity/dist/
 
