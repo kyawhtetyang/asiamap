@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Hero from "../../components/Hero";
 import InquiryForm from "../../components/InquiryForm";
 import { siteContent } from "../../data/siteContent";
+
+export const metadata: Metadata = {
+  title: "Request Container Transportation | AsiaMap",
+  description:
+    "Contact AsiaMap for container and cargo transportation across Yangon, Lower Myanmar, and Mandalay. Send pickup, destination, and cargo details online.",
+};
 
 export default function ContactPage() {
   return (
@@ -16,17 +23,9 @@ export default function ContactPage() {
           <p className="eyebrow">Direct Contact</p>
           <h2>{siteContent.contact.officeTitle}</h2>
           <div className="contact-office-lines">
-            <p>
-              <strong>Phone:</strong>{" "}
-              <a href={siteContent.contact.phoneHref}>{siteContent.contact.phone}</a>
-            </p>
-            <p>
-              <strong>Email:</strong>{" "}
-              <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
-            </p>
-            <p>
-              <strong>Coverage:</strong> {siteContent.contact.coverage}
-            </p>
+            <p><strong>Phone:</strong>{" "}<a href={siteContent.contact.phoneHref}>{siteContent.contact.phone}</a></p>
+            <p><strong>Email:</strong>{" "}<a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a></p>
+            <p><strong>Coverage:</strong> {siteContent.contact.coverage}</p>
           </div>
         </div>
 
