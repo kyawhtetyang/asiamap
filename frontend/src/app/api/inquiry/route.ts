@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_INQUIRY_EMAIL = "kyaw.htet.yang@gmail.com";
 
 type Inquiry = {
   name?: unknown;
@@ -32,11 +31,14 @@ function escapeHtml(value: string) {
 
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
+  const inquiryEmail = process.env.INQUIRY_TO_EMAIL;
   const from = process.env.INQUIRY_FROM_EMAIL || "AsiaMap Website <onboarding@resend.dev>";
-  const inquiryEmail = process.env.INQUIRY_TO_EMAIL || DEFAULT_INQUIRY_EMAIL;
 
-  if (!apiKey) {
-    return NextResponse.json({ error: "Inquiry email is not configured yet. Please call AsiaMap directly." }, { status: 503 });
+  if (!apiKey || !inquiryEmail) {
+    return NextResponse.json(
+      { error: "Inquiry email is not configured yet. Please call AsiaMap directly." },
+      { status: 503 },
+    );
   }
 
   let body: Inquiry;
@@ -57,7 +59,10 @@ export async function POST(request: Request) {
   };
 
   if (!inquiry.name || !inquiry.phone || !inquiry.pickup || !inquiry.destination) {
-    return NextResponse.json({ error: "Please complete name, phone, pickup location, and destination." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Please complete name, phone, pickup location, and destination." },
+      { status: 400 },
+    );
   }
 
   const rows = [
@@ -93,7 +98,10 @@ export async function POST(request: Request) {
 
   if (!response.ok) {
     console.error("Resend inquiry failure", response.status, await response.text());
-    return NextResponse.json({ error: "Unable to send the inquiry right now. Please call AsiaMap directly." }, { status: 502 });
+    return NextResponse.json(
+      { error: "Unable to send the inquiry right now. Please call AsiaMap directly." },
+      { status: 502 },
+    );
   }
 
   return NextResponse.json({ ok: true });
