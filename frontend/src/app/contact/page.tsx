@@ -1,4 +1,5 @@
 import Hero from "../../components/Hero";
+import InquiryForm from "../../components/InquiryForm";
 import { siteContent } from "../../data/siteContent";
 
 export default function ContactPage() {
@@ -12,6 +13,7 @@ export default function ContactPage() {
 
       <section className="section page-shell contact-page-section">
         <div className="contact-office-block">
+          <p className="eyebrow">Direct Contact</p>
           <h2>{siteContent.contact.officeTitle}</h2>
           <div className="contact-office-lines">
             <p>
@@ -25,10 +27,16 @@ export default function ContactPage() {
             <p>
               <strong>Coverage:</strong> {siteContent.contact.coverage}
             </p>
-            <p>
-              <strong>Web:</strong> {siteContent.contact.website}
-            </p>
           </div>
+        </div>
+
+        <div className="contact-inquiry-block">
+          <p className="eyebrow">Request Transport</p>
+          <h2>Send your transport requirement.</h2>
+          <p className="contact-inquiry-intro">
+            Tell us the pickup point, destination, cargo, and timing. We will use these details to follow up on your inquiry.
+          </p>
+          <InquiryForm />
         </div>
       </section>
     </main>
