@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const INQUIRY_EMAIL = "asiamap.business@gmail.com";
+const DEFAULT_INQUIRY_EMAIL = "kyaw.htet.yang@gmail.com";
 
 type Inquiry = {
   name?: unknown;
@@ -33,6 +33,7 @@ function escapeHtml(value: string) {
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.INQUIRY_FROM_EMAIL || "AsiaMap Website <onboarding@resend.dev>";
+  const inquiryEmail = process.env.INQUIRY_TO_EMAIL || DEFAULT_INQUIRY_EMAIL;
 
   if (!apiKey) {
     return NextResponse.json({ error: "Inquiry email is not configured yet. Please call AsiaMap directly." }, { status: 503 });
@@ -84,7 +85,7 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       from,
-      to: [INQUIRY_EMAIL],
+      to: [inquiryEmail],
       subject: `AsiaMap inquiry: ${inquiry.pickup} → ${inquiry.destination}`,
       html,
     }),
