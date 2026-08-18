@@ -4,4 +4,4 @@ frontend/dist/
 frontend/*.tsbuildinfo
 sanity/node_modules/
 sanity/dist/
-
+__install
