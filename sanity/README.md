@@ -1,6 +1,6 @@
 # AsiaMap Sanity CMS
 
-Sanity CMS is planned after the React/Vite frontend is stable.
+Sanity CMS is planned only if the business needs non-developer content editing after the Next.js frontend is stable.
 
 ## Current Status
 - No Sanity project has been initialized yet.
@@ -13,4 +13,3 @@ Sanity CMS is planned after the React/Vite frontend is stable.
 - Coverage/route content
 - Contact details
 - Homepage copy and images
-
