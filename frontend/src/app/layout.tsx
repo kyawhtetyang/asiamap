@@ -4,8 +4,9 @@ import Footer from "../components/Footer";
 import "../styles.css";
 
 export const metadata: Metadata = {
-  title: "AsiaMap",
-  description: "Container transportation across Asia.",
+  title: "AsiaMap | Container Transportation in Myanmar",
+  description:
+    "Container and cargo transportation services across Yangon, Lower Myanmar, and Mandalay, backed by more than 30 years of operating experience.",
 };
 
 export default function RootLayout({

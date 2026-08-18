@@ -1,15 +1,22 @@
+import type { Metadata } from "next";
 import Hero from "../../components/Hero";
 import { siteContent } from "../../data/siteContent";
+
+export const metadata: Metadata = {
+  title: "Container Transport Services in Myanmar | AsiaMap",
+  description:
+    "AsiaMap provides container and cargo transport between ports, warehouses, manufacturers, and stores across Yangon, Lower Myanmar, and Mandalay.",
+};
 
 export default function ServicesPage() {
   return (
     <main>
-      <Hero eyebrow="Our Services" title={siteContent.services.title} />
+      <Hero eyebrow="Our Services" title={siteContent.services.title} body={siteContent.services.body} />
 
       <section className="section page-shell services-card-section">
         <div className="compact-copy">
-          <p className="eyebrow">Service Boxes</p>
-          <h2>Core transport support.</h2>
+          <p className="eyebrow">Transport Services</p>
+          <h2>Built around how cargo actually moves.</h2>
         </div>
 
         <div className="services-card-grid">
@@ -32,20 +39,41 @@ export default function ServicesPage() {
 
       <section className="section page-shell trusted-services-section">
         <div className="compact-copy">
-          <p className="eyebrow">{siteContent.services.trustedTitle}</p>
-          <h2>Companies We Work With</h2>
-          <p>{siteContent.services.trustedBody}</p>
+          <p className="eyebrow">{siteContent.services.cargoTitle}</p>
+          <h2>Cargo we have experience moving.</h2>
         </div>
-
         <div className="trusted-services-list">
-          {siteContent.services.trustedItems.map((item) => (
-            <div key={item} className="trusted-services-item">
-              {item}
-            </div>
+          {siteContent.services.cargoItems.map((item) => (
+            <div key={item} className="trusted-services-item">{item}</div>
           ))}
         </div>
       </section>
 
+      <section className="section page-shell trusted-services-section">
+        <div className="compact-copy">
+          <p className="eyebrow">{siteContent.services.coverageTitle}</p>
+          <h2>Myanmar-focused operating coverage.</h2>
+          <p>{siteContent.services.coverageBody}</p>
+        </div>
+        <div className="trusted-services-list">
+          {siteContent.services.coverageItems.map((item) => (
+            <div key={item} className="trusted-services-item">{item}</div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section page-shell trusted-services-section">
+        <div className="compact-copy">
+          <p className="eyebrow">{siteContent.services.trustTitle}</p>
+          <h2>Experience before claims.</h2>
+          <p>{siteContent.services.trustBody}</p>
+        </div>
+        <div className="trusted-services-list">
+          {siteContent.services.trustItems.map((item) => (
+            <div key={item} className="trusted-services-item">{item}</div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
