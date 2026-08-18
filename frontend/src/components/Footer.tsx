@@ -7,7 +7,7 @@ function Footer() {
       <div className="site-footer">
         <div className="footer-column footer-brand-block">
           <strong className="footer-heading">{siteContent.brand}</strong>
-          <p>Container transportation for regional business needs.</p>
+          <p>Container and cargo transportation across Myanmar since 1993.</p>
         </div>
         <div className="footer-column">
           <strong className="footer-heading">Company</strong>
@@ -19,16 +19,15 @@ function Footer() {
         </div>
         <div className="footer-column">
           <strong className="footer-heading">Services</strong>
-          <span>Container Transportation</span>
-          <span>Route Planning</span>
-          <span>Port-to-destination</span>
+          <span>Port ↔ Warehouse</span>
+          <span>Warehouse ↔ Warehouse</span>
+          <span>Manufacturer → Distribution</span>
         </div>
         <div className="footer-column">
           <strong className="footer-heading">Contact</strong>
-          <span>{siteContent.contact.phone}</span>
-          <span>{siteContent.contact.email}</span>
-          <span>{siteContent.contact.website}</span>
-          <span>{siteContent.contact.location}</span>
+          <a href={siteContent.contact.phoneHref}>{siteContent.contact.phone}</a>
+          <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+          <span>{siteContent.contact.coverage}</span>
         </div>
         <div className="footer-legal">
           <p className="copyright">&copy; 2026 AsiaMap. All rights reserved.</p>
