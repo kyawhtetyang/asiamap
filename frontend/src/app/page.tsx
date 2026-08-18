@@ -12,12 +12,12 @@ export default function HomePage() {
         variant="home"
       >
         <div className="actions">
-          <Link className="button secondary" href="/services">
-            Services
-          </Link>
           <Link className="button primary" href="/contact">
-            Contact
+            Request Transport
           </Link>
+          <a className="button secondary" href={siteContent.contact.phoneHref}>
+            Call {siteContent.contact.phone}
+          </a>
         </div>
       </Hero>
 
@@ -31,9 +31,29 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="section home-services-section">
+          <div className="home-gallery-head compact-copy">
+            <p className="eyebrow">Transport Services</p>
+            <h2>From pickup point to destination.</h2>
+            <p>{siteContent.services.body}</p>
+          </div>
+          <div className="home-service-grid">
+            {siteContent.services.cards.map((service) => (
+              <article className="home-service-card" key={service.title}>
+                <strong>{service.title}</strong>
+                <p>{service.items.join(" • ")}</p>
+              </article>
+            ))}
+          </div>
+          <Link className="text-link" href="/services">
+            View all services →
+          </Link>
+        </section>
+
         <section className="section home-gallery-section">
           <div className="home-gallery-head compact-copy">
-            <p className="eyebrow">Operations View</p>
+            <p className="eyebrow">Operating Experience</p>
+            <h2>Built through real transport operations.</h2>
           </div>
           <div className="transport-gallery" aria-label="AsiaMap transport gallery">
             {siteContent.home.gallery.map((item) => (
@@ -46,6 +66,39 @@ export default function HomePage() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="section home-coverage-section">
+          <div className="compact-copy">
+            <p className="eyebrow">Operating Coverage</p>
+            <h2>Yangon, Lower Myanmar, and Mandalay.</h2>
+            <p>{siteContent.services.coverageBody}</p>
+          </div>
+          <div className="coverage-chip-list" aria-label="Representative operating areas">
+            {siteContent.services.coverageItems.map((area) => (
+              <span className="coverage-chip" key={area}>
+                {area}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section className="section home-cta-section">
+          <div>
+            <p className="eyebrow">Need Transportation?</p>
+            <h2>Tell us what you need to move.</h2>
+            <p>
+              Share your pickup point, destination, cargo type, and timing. AsiaMap will follow up on the transport requirement.
+            </p>
+          </div>
+          <div className="actions">
+            <Link className="button primary" href="/contact">
+              Request Transport
+            </Link>
+            <a className="button secondary" href={siteContent.contact.phoneHref}>
+              Call {siteContent.contact.phone}
+            </a>
           </div>
         </section>
       </div>
