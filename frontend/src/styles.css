@@ -60,7 +60,10 @@ img { display: block; max-width: 100%; }
 .hero-copy { width: min(720px,100%); }
 .eyebrow { margin: 0 0 12px; color: var(--accent); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
 .hero h1, .page-hero h1 { max-width: 900px; margin: 0; font-size: clamp(1.9rem,3vw,3.05rem); line-height: 1.02; }
-.hero p, .page-hero p { max-width: 680px; margin: 18px 0 0; font-size: 1rem; color: rgba(255,255,255,.88); }
+.hero p { max-width: 680px; margin: 18px 0 0; font-size: 1rem; color: rgba(255,255,255,.88); }
+.page-hero { padding: clamp(64px,8vw,96px) 0; background: var(--surface-soft); color: var(--text); border-bottom: 1px solid var(--line); }
+.page-hero .eyebrow { color: var(--accent); }
+.page-hero .hero-copy > p:not(.eyebrow) { max-width: 680px; margin: 18px 0 0; font-size: 1rem; color: var(--muted); }
 .actions { gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border: 1px solid transparent; border-radius: 999px; font-size: .92rem; font-weight: 750; cursor: pointer; }
 .button.primary { background: var(--accent); color: #fff; }
@@ -157,6 +160,7 @@ img { display: block; max-width: 100%; }
   .menu-toggle { width: 38px; height: 38px; }
   .mobile-nav-links a { min-height: 44px; font-size: .9rem; }
   .hero { min-height: 62vh; }
+  .page-hero { padding: 52px 0; }
   .button { width: 100%; }
   .actions { width: 100%; }
   .trusted-services-list, .site-footer { grid-template-columns: 1fr; }
