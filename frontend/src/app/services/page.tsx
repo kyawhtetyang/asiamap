@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Hero from "../../components/Hero";
 import { siteContent } from "../../data/siteContent";
+
+export const metadata: Metadata = {
+  title: "Container Transport Services in Myanmar | AsiaMap",
+  description:
+    "AsiaMap provides container and cargo transport between ports, warehouses, manufacturers, and stores across Yangon, Lower Myanmar, and Mandalay.",
+};
 
 export default function ServicesPage() {
   return (
@@ -37,9 +44,7 @@ export default function ServicesPage() {
         </div>
         <div className="trusted-services-list">
           {siteContent.services.cargoItems.map((item) => (
-            <div key={item} className="trusted-services-item">
-              {item}
-            </div>
+            <div key={item} className="trusted-services-item">{item}</div>
           ))}
         </div>
       </section>
@@ -52,9 +57,7 @@ export default function ServicesPage() {
         </div>
         <div className="trusted-services-list">
           {siteContent.services.coverageItems.map((item) => (
-            <div key={item} className="trusted-services-item">
-              {item}
-            </div>
+            <div key={item} className="trusted-services-item">{item}</div>
           ))}
         </div>
       </section>
@@ -67,9 +70,7 @@ export default function ServicesPage() {
         </div>
         <div className="trusted-services-list">
           {siteContent.services.trustItems.map((item) => (
-            <div key={item} className="trusted-services-item">
-              {item}
-            </div>
+            <div key={item} className="trusted-services-item">{item}</div>
           ))}
         </div>
       </section>
