@@ -75,17 +75,28 @@ Recommended weights:
 - 600 — navigation, buttons, H3
 - 700 — strong labels when needed
 
+### Myanmar Script Typeface — Noto Sans Myanmar
+
+Use **Noto Sans Myanmar** automatically as the fallback for Burmese/Myanmar-script content. Barlow and Barlow Condensed remain the Latin brand typefaces; Myanmar text should not fall back to an arbitrary operating-system font.
+
+Recommended weights:
+
+- 400 — Myanmar body text
+- 500–600 — supporting emphasis
+- 700 — strong Myanmar labels/headings when needed
+
 ### Typography Principles
 
 - Headings should be compact, confident, and operational.
 - Body text should remain comfortable for longer reading.
 - Do not use Barlow Condensed for paragraphs or form input text.
 - Avoid excessive uppercase. Reserve uppercase and letter spacing for short labels and eyebrows.
-- Keep the system to the Barlow family unless a future brand revision explicitly changes it.
+- Keep Latin typography to the Barlow family unless a future brand revision explicitly changes it.
+- Use Noto Sans Myanmar for Myanmar-script glyph coverage and consistent rendering.
 
 ### Fallbacks
 
-Use system sans-serif fallbacks when the preferred web fonts are unavailable.
+Use Noto Sans Myanmar for Myanmar-script content and system sans-serif fallbacks when the preferred web fonts are unavailable.
 
 ## Buttons
 
@@ -157,6 +168,7 @@ Body           Barlow 400
 Navigation     Barlow 600
 Buttons        Barlow 600
 Eyebrows       Barlow 700 + restrained letter spacing
+Myanmar text   Noto Sans Myanmar 400–700
 ```
 
 ## Source of Truth
@@ -166,9 +178,9 @@ The relationship is:
 ```text
 docs/BRAND_GUIDELINES.md
         ↓
-frontend/src/styles.css
+frontend/src/styles.css + frontend/src/typography.css
         ↓
 Home / Services / Contact
 ```
 
-This document defines the brand system. The frontend stylesheet implements it. Future visual changes should update this guide when they change the canonical brand rules.
+This document defines the brand system. The frontend stylesheets implement it. Future visual changes should update this guide when they change the canonical brand rules.
