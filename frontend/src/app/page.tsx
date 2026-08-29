@@ -20,9 +20,9 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="hero-proof" aria-label="AsiaMap operating profile">
-          <div><strong>Since 1993</strong><span>Operating experience</span></div>
-          <div><strong>30+ years</strong><span>Myanmar transport knowledge</span></div>
-          <div><strong>Yangon → Mandalay</strong><span>Core operating coverage</span></div>
+          <div><strong>{siteContent.services.trustItems[0]}</strong><span>Established</span></div>
+          <div><strong>{siteContent.services.trustItems[1]}</strong><span>Transport experience</span></div>
+          <div><strong>{siteContent.services.trustItems[3]}</strong><span>Current operating coverage</span></div>
         </div>
       </Hero>
 
