@@ -75,15 +75,9 @@ Recommended weights:
 - 600 — navigation, buttons, H3
 - 700 — strong labels when needed
 
-### Myanmar Script Typeface — Noto Sans Myanmar
+### Myanmar Script
 
-Use **Noto Sans Myanmar** automatically as the fallback for Burmese/Myanmar-script content. Barlow and Barlow Condensed remain the Latin brand typefaces; Myanmar text should not fall back to an arbitrary operating-system font.
-
-Recommended weights:
-
-- 400 — Myanmar body text
-- 500–600 — supporting emphasis
-- 700 — strong Myanmar labels/headings when needed
+Barlow is the Latin brand typeface. Myanmar-script content should use the browser/platform's Unicode-capable sans-serif fallback when Barlow does not contain the required glyphs. A dedicated Myanmar brand typeface may be introduced in a later brand revision after visual testing.
 
 ### Typography Principles
 
@@ -92,11 +86,11 @@ Recommended weights:
 - Do not use Barlow Condensed for paragraphs or form input text.
 - Avoid excessive uppercase. Reserve uppercase and letter spacing for short labels and eyebrows.
 - Keep Latin typography to the Barlow family unless a future brand revision explicitly changes it.
-- Use Noto Sans Myanmar for Myanmar-script glyph coverage and consistent rendering.
+- Myanmar-script content must remain readable and must not be forced into an unsupported Latin font.
 
 ### Fallbacks
 
-Use Noto Sans Myanmar for Myanmar-script content and system sans-serif fallbacks when the preferred web fonts are unavailable.
+Use system sans-serif fallbacks when the preferred web fonts are unavailable or do not contain the required script glyphs.
 
 ## Buttons
 
@@ -168,7 +162,7 @@ Body           Barlow 400
 Navigation     Barlow 600
 Buttons        Barlow 600
 Eyebrows       Barlow 700 + restrained letter spacing
-Myanmar text   Noto Sans Myanmar 400–700
+Myanmar text   Unicode-capable system sans-serif fallback
 ```
 
 ## Source of Truth
