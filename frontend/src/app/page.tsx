@@ -28,7 +28,6 @@ export default function HomePage() {
 
       <div className="page-shell">
         <section className="section story-section">
-          <div className="section-kicker">01</div>
           <div className="section-copy story-copy">
             <p className="eyebrow">Our Story</p>
             <h2>{siteContent.home.storyTitle}</h2>
