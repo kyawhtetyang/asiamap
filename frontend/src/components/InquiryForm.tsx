@@ -36,14 +36,14 @@ export default function InquiryForm() {
   }
 
   return (
-    <form className="inquiry-form" onSubmit={handleSubmit}>
+    <form className="inquiry-form" onSubmit={handleSubmit} aria-busy={status === "submitting"}>
       <div className="inquiry-grid">
         <label>
-          Name <span aria-hidden="true">*</span>
+          Name <span aria-hidden="true">*</span><span className="sr-only"> (required)</span>
           <input name="name" autoComplete="name" required maxLength={100} />
         </label>
         <label>
-          Phone <span aria-hidden="true">*</span>
+          Phone <span aria-hidden="true">*</span><span className="sr-only"> (required)</span>
           <input name="phone" type="tel" autoComplete="tel" required maxLength={40} />
         </label>
         <label>
@@ -55,11 +55,11 @@ export default function InquiryForm() {
           <input name="cargoType" maxLength={120} placeholder="e.g. cement, steel, container" />
         </label>
         <label>
-          Pickup location <span aria-hidden="true">*</span>
+          Pickup location <span aria-hidden="true">*</span><span className="sr-only"> (required)</span>
           <input name="pickup" required maxLength={160} />
         </label>
         <label>
-          Destination <span aria-hidden="true">*</span>
+          Destination <span aria-hidden="true">*</span><span className="sr-only"> (required)</span>
           <input name="destination" required maxLength={160} />
         </label>
       </div>

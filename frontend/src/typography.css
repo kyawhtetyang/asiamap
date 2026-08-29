@@ -1,0 +1,47 @@
+/* AsiaMap typography implementation. Canonical rules: docs/BRAND_GUIDELINES.md */
+
+body {
+  font-family: var(--font-barlow), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+.hero-proof strong,
+.experience-stat strong {
+  font-family: var(--font-barlow-condensed), var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+}
+
+h3,
+.brand-copy,
+.nav-links,
+.mobile-nav-links,
+.button,
+.header-phone,
+.eyebrow,
+.section-kicker,
+.text-link,
+.card-index,
+.home-service-card strong,
+.gallery-card-copy strong,
+.gallery-card-meta,
+.coverage-chip,
+.footer-heading,
+label,
+input,
+textarea,
+button {
+  font-family: var(--font-barlow), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
