@@ -2,7 +2,7 @@
 
 ## Scope
 
-Operational contract for AsiaMap `v0.1.0`.
+Operational contract for AsiaMap `v0.2.0`.
 
 ## Local Development
 
@@ -22,7 +22,7 @@ npm run build
 npm start
 ```
 
-A release candidate should not be merged if the production build fails.
+A release candidate must not be merged if the production build fails.
 
 ## Deployment
 
@@ -36,9 +36,34 @@ Expected configuration:
 
 ## Configuration
 
-`v0.1.0` has no documented application secrets or custom backend environment variables.
+The inquiry endpoint requires server-side environment configuration. Variable names are documented in `frontend/.env.example`; secret values must never be committed.
 
-If future releases add external APIs, databases, email providers, or Sanity credentials, document the required variable names here without committing secret values.
+Required:
+
+- `RESEND_API_KEY` — Resend API credential used only by the server-side inquiry route.
+- `INQUIRY_TO_EMAIL` — destination inbox for transport inquiries.
+
+Optional:
+
+- `INQUIRY_FROM_EMAIL` — sender identity. Until an AsiaMap-owned sending domain is verified, the application may use the Resend onboarding sender for testing.
+
+Production configuration should be stored in the Vercel environment, not source control.
+
+## Inquiry Flow
+
+```text
+Contact form
+   ↓
+POST /api/inquiry
+   ↓
+server-side validation + sanitization
+   ↓
+Resend
+   ↓
+AsiaMap inquiry inbox
+```
+
+If required inquiry configuration is missing, the endpoint returns `503`. Provider delivery failures return `502`; invalid requests return `400`.
 
 ## Release Procedure
 
@@ -49,27 +74,29 @@ implementation branch
    ↓
 review + build verification
    ↓
-merge to main
+release documentation synchronized
    ↓
-update CHANGELOG
+merge to main
    ↓
 tag release
 ```
 
 Version rules:
 
-- patch (`0.1.1`) → backward-compatible fixes to an existing capability;
-- minor (`0.2.0`) → meaningful new pre-stable capability;
+- patch (`0.2.1`) → backward-compatible fixes to an existing capability;
+- minor (`0.3.0`) → meaningful new pre-stable capability;
 - major (`1.0.0`) → first stable production contract or later breaking stable change.
+
+Before tagging, verify `package.json`, README, architecture, operations, roadmap status, and changelog all describe the same version.
 
 ## Recovery
 
 For a bad deployment:
 
 1. identify the last known-good commit or deployment;
-2. roll back through the deployment platform or revert the faulty commit;
-3. verify Home, Services, and Contact routes;
-4. verify inquiry behavior;
+2. roll back through Vercel or revert the faulty commit;
+3. verify Home, Services, Contact, and not-found routes;
+4. verify `/api/inquiry` behavior and one controlled inquiry submission when configuration permits;
 5. record the corrective change in `CHANGELOG.md` if released.
 
 ## Production Verification
@@ -79,8 +106,25 @@ Before a public release verify:
 - `/` loads successfully;
 - `/services` loads successfully;
 - `/contact` loads successfully;
+- unknown routes render the expected 404 experience;
+- `robots.txt` is generated correctly;
 - navigation works on desktop and mobile;
 - business contact details are real;
-- inquiry submission behaves as documented;
-- page metadata is correct;
-- no obvious placeholder content remains.
+- inquiry validation works;
+- configured inquiry delivery reaches the intended inbox;
+- page metadata and canonical/domain configuration are correct;
+- no obvious placeholder content remains;
+- no secret values are committed;
+- production build passes.
+
+## Deferred Production Hardening
+
+Before `v1.0.0`, evaluate or implement as required:
+
+- automated unit/integration and browser smoke tests;
+- CI build/type/test gates;
+- inquiry anti-spam/rate limiting;
+- security headers/CSP;
+- production error monitoring;
+- analytics only if the business has a defined measurement need;
+- verified AsiaMap sender domain and final production domain/canonical configuration.
