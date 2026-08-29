@@ -20,7 +20,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 const notoSansMyanmar = Noto_Sans_Myanmar({
-  weight: "variable",
+  weight: "400",
   variable: "--font-myanmar",
   display: "swap",
 });
