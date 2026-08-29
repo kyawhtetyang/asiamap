@@ -14,11 +14,11 @@ const cargoGroups = [
   { label: "Commercial", items: siteContent.services.cargoItems.slice(5) },
 ];
 
-const trustDetails = [
-  ["Since 1993", "Established"],
-  ["30+ Years", "Transport experience"],
-  ["Lower Myanmar", "Core operating region"],
-  ["Yangon & Mandalay", "Major corridor"],
+const trustLabels = [
+  "Established",
+  "Transport experience",
+  "Core operating region",
+  "Current operating coverage",
 ];
 
 export default function ServicesPage() {
@@ -81,8 +81,6 @@ export default function ServicesPage() {
                 <span className="route-node" aria-hidden="true" />
                 <span className="route-index">{String(index + 1).padStart(2, "0")}</span>
                 <strong>{item}</strong>
-                {index === 0 && <small>Primary hub</small>}
-                {index === 1 && <small>Major corridor</small>}
               </div>
             ))}
           </div>
@@ -96,10 +94,10 @@ export default function ServicesPage() {
           <p>{siteContent.services.trustBody}</p>
         </div>
         <div className="experience-band">
-          {trustDetails.map(([value, label]) => (
+          {siteContent.services.trustItems.map((value, index) => (
             <div className="experience-stat" key={value}>
               <strong>{value}</strong>
-              <span>{label}</span>
+              <span>{trustLabels[index]}</span>
             </div>
           ))}
         </div>
