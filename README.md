@@ -1,8 +1,8 @@
 # AsiaMap
 
-AsiaMap is a transportation business website for container and cargo services.
+AsiaMap is a transportation business website for container and cargo services in Myanmar.
 
-**Current version:** `v0.1.0`
+**Current version:** `v0.2.0`
 
 ## Repository
 
@@ -27,8 +27,9 @@ Pages:
 - `/` — Home
 - `/services` — Services
 - `/contact` — Contact
+- `/api/inquiry` — server-side transport inquiry endpoint
 
-`sanity/` is reserved for a future CMS integration. No custom backend exists in `v0.1.0`.
+The inquiry form posts to the Next.js route handler, which delivers inquiries through Resend. `sanity/` remains reserved for a future CMS integration. No application database or standalone backend exists in `v0.2.0`.
 
 ## Local Development
 
@@ -55,21 +56,21 @@ Target platform: Vercel.
 - Root directory: `frontend`
 - Build command: `npm run build`
 - Framework: Next.js
-
-See `docs/OPERATIONS.md` for the operational contract.
+- Required production configuration: see `frontend/.env.example` and `docs/OPERATIONS.md`
 
 ## Documentation
 
 - `docs/ARCHITECTURE.md` — current system design and boundaries
 - `docs/ROADMAP.md` — planned product evolution
-- `docs/OPERATIONS.md` — local, deployment, and recovery procedures
+- `docs/OPERATIONS.md` — local, deployment, configuration, release, and recovery procedures
 - `CHANGELOG.md` — released version history
 
-## v0.1.0 Launch Gaps
+## v0.2.0 Remaining Production Work
 
-The baseline intentionally records the current pre-production state. Before public launch:
+The business-ready application is implemented. Remaining production verification includes:
 
-- replace placeholder phone, location, address, and WhatsApp details;
-- confirm exact transportation services and coverage regions;
-- replace the current `mailto:` inquiry flow with a production form workflow;
-- complete production metadata, SEO, accessibility, and deployment verification.
+- verify the final production domain and canonical URL configuration;
+- verify an AsiaMap-owned sender domain for inquiry email when available;
+- add automated tests and CI gates in a later engineering release;
+- add anti-spam/rate-limiting controls before inquiry traffic materially increases;
+- verify production monitoring, accessibility, SEO, and deployment behavior before `v1.0.0`.
