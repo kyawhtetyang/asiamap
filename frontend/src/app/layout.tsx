@@ -20,7 +20,6 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 const notoSansMyanmar = Noto_Sans_Myanmar({
-  subsets: ["myanmar"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-myanmar",
   display: "swap",
