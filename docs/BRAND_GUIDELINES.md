@@ -111,6 +111,14 @@ Use system sans-serif fallbacks when the preferred web fonts are unavailable or 
 - Typeface: Barlow 600
 - Border radius: `8px`
 
+### Outline on Light Surfaces
+
+- Transparent background
+- Deep Harbor `#0F3D4C` border and text
+- Hover: Deep Harbor background with white text
+- Typeface: Barlow 600
+- Border radius: `8px`
+
 ### Header CTA
 
 - Background: Cargo Amber `#E0A12D`
