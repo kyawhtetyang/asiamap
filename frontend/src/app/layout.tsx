@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed, Noto_Sans_Myanmar } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles.css";
@@ -19,12 +19,6 @@ const barlowCondensed = Barlow_Condensed({
   display: "swap",
 });
 
-const notoSansMyanmar = Noto_Sans_Myanmar({
-  weight: "400",
-  variable: "--font-myanmar",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "AsiaMap | Container Transportation in Myanmar",
   description:
@@ -37,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable} ${notoSansMyanmar.variable}`}>
+    <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <body>
         <Header />
         {children}
