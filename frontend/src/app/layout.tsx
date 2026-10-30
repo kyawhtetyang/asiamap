@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { siteUrl } from "../lib/site";
 import "../styles.css";
 import "../typography.css";
 
@@ -19,10 +20,31 @@ const barlowCondensed = Barlow_Condensed({
   display: "swap",
 });
 
+const description =
+  "Container and cargo transportation services across Yangon, Lower Myanmar, and Mandalay, backed by more than 30 years of operating experience.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "AsiaMap | Container Transportation in Myanmar",
-  description:
-    "Container and cargo transportation services across Yangon, Lower Myanmar, and Mandalay, backed by more than 30 years of operating experience.",
+  description,
+  openGraph: {
+    type: "website",
+    siteName: "AsiaMap",
+    title: "AsiaMap | Container Transportation in Myanmar",
+    description,
+    url: siteUrl,
+  },
+};
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "AsiaMap",
+  url: siteUrl,
+  telephone: "+959675221014",
+  email: "asiamap.business@gmail.com",
+  description,
+  areaServed: ["Yangon", "Lower Myanmar", "Mandalay"],
 };
 
 export default function RootLayout({
@@ -33,6 +55,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
         <Header />
         {children}
         <Footer />
