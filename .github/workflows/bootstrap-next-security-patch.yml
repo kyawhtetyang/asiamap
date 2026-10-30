@@ -1,4 +1,4 @@
-name: Bootstrap Next.js security patch
+name: Bootstrap dependency security patch
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   patch-and-validate:
-    if: github.event.head_commit.message == 'repair dependency bootstrap workflow v2'
+    if: github.event.head_commit.message == 'test clean dependency path with Next 16'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,8 +26,11 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Regenerate lockfile with patched Next.js
-        run: npm install next@15.5.28 --save-exact --package-lock-only
+      - name: Regenerate lockfile with current secure Next.js
+        run: npm install next@16.4.3 --save-exact --package-lock-only
+
+      - name: Apply non-breaking audit fixes
+        run: npm audit fix --package-lock-only
 
       - name: Install dependencies
         run: npm ci
@@ -38,7 +41,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Commit dependency patch
+      - name: Commit validated dependency patch
         working-directory: .
         run: |
           if git diff --quiet -- frontend/package.json frontend/package-lock.json; then
@@ -48,5 +51,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add frontend/package.json frontend/package-lock.json
-          git commit -m "chore: patch Next.js to 15.5.28"
+          git commit -m "chore: upgrade Next.js to 16.4.3"
           git push
