@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   patch-and-validate:
-    if: ${{ github.event.head_commit.message == 'fix: repair dependency bootstrap workflow' }}
+    if: github.event.head_commit.message == 'repair dependency bootstrap workflow v2'
     runs-on: ubuntu-latest
     defaults:
       run:
