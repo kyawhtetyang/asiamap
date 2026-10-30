@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "../components/Hero";
 import { siteContent } from "../data/siteContent";
+
+const description =
+  "Container and cargo transportation services across Yangon, Lower Myanmar, and Mandalay, backed by more than 30 years of operating experience.";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "AsiaMap | Container Transportation in Myanmar",
+    description,
+    url: "/",
+  },
+};
 
 export default function HomePage() {
   return (
