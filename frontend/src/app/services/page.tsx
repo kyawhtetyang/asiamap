@@ -2,10 +2,18 @@ import type { Metadata } from "next";
 import Hero from "../../components/Hero";
 import { siteContent } from "../../data/siteContent";
 
+const description =
+  "AsiaMap provides container and cargo transport between ports, warehouses, manufacturers, and stores across Yangon, Lower Myanmar, and Mandalay.";
+
 export const metadata: Metadata = {
   title: "Container Transport Services in Myanmar | AsiaMap",
-  description:
-    "AsiaMap provides container and cargo transport between ports, warehouses, manufacturers, and stores across Yangon, Lower Myanmar, and Mandalay.",
+  description,
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Container Transport Services in Myanmar | AsiaMap",
+    description,
+    url: "/services",
+  },
 };
 
 const cargoGroups = [
