@@ -3,10 +3,18 @@ import Hero from "../../components/Hero";
 import InquiryForm from "../../components/InquiryForm";
 import { siteContent } from "../../data/siteContent";
 
+const description =
+  "Contact AsiaMap for container and cargo transportation across Yangon, Lower Myanmar, and Mandalay. Send pickup, destination, and cargo details online.";
+
 export const metadata: Metadata = {
   title: "Request Container Transportation | AsiaMap",
-  description:
-    "Contact AsiaMap for container and cargo transportation across Yangon, Lower Myanmar, and Mandalay. Send pickup, destination, and cargo details online.",
+  description,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Request Container Transportation | AsiaMap",
+    description,
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {
