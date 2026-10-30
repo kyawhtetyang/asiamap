@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { siteUrl } from "../lib/site";
 import "../styles.css";
 import "../typography.css";
+import "../brand-polish.css";
 
 const barlow = Barlow({
   subsets: ["latin"],
