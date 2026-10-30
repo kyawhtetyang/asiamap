@@ -77,7 +77,19 @@ Recommended weights:
 
 ### Myanmar Script
 
-Barlow is the Latin brand typeface. Myanmar-script content should use the browser/platform's Unicode-capable sans-serif fallback when Barlow does not contain the required glyphs. A dedicated Myanmar brand typeface may be introduced in a later brand revision after visual testing.
+Barlow is the Latin brand typeface. Myanmar-script content should be marked with the correct language (`lang="my"`) and use a Unicode-capable Myanmar-first fallback stack rather than being visually forced through the Latin brand family.
+
+Current fallback preference:
+
+```text
+Noto Sans Myanmar
+→ Myanmar Text
+→ Pyidaungsu
+→ Myanmar Sangam MN
+→ system sans-serif
+```
+
+A dedicated bundled Myanmar brand typeface may be introduced later only after cross-platform visual testing. The current approach deliberately avoids adding another web-font dependency merely for stylistic consistency.
 
 ### Typography Principles
 
@@ -87,6 +99,7 @@ Barlow is the Latin brand typeface. Myanmar-script content should use the browse
 - Avoid excessive uppercase. Reserve uppercase and letter spacing for short labels and eyebrows.
 - Keep Latin typography to the Barlow family unless a future brand revision explicitly changes it.
 - Myanmar-script content must remain readable and must not be forced into an unsupported Latin font.
+- Myanmar body copy may use slightly more line height than Latin copy to preserve script readability.
 
 ### Fallbacks
 
@@ -139,6 +152,17 @@ Use system sans-serif fallbacks when the preferred web fonts are unavailable or 
 - Use clear grid alignment and generous but controlled whitespace.
 - Strong horizontal/vertical structure should reinforce the logistics and operational character.
 
+### Density
+
+AsiaMap should feel substantial but operational rather than editorially oversized.
+
+- Homepage hero target: approximately `650px` minimum height on desktop.
+- Tablet hero target: approximately `600px` minimum height.
+- Mobile hero target: approximately `570px` minimum height.
+- Standard major-section vertical padding should generally stay within roughly `52–84px` depending on viewport size.
+- Prefer tightening excessive whitespace before introducing additional visual elements.
+- Do not compress forms, touch targets, or proof content merely to reduce page length.
+
 ## UI Treatment
 
 ### Cards
@@ -170,7 +194,7 @@ Body           Barlow 400
 Navigation     Barlow 600
 Buttons        Barlow 600
 Eyebrows       Barlow 700 + restrained letter spacing
-Myanmar text   Unicode-capable system sans-serif fallback
+Myanmar text   Myanmar-first Unicode sans-serif fallback
 ```
 
 ## Source of Truth
@@ -180,7 +204,9 @@ The relationship is:
 ```text
 docs/BRAND_GUIDELINES.md
         ↓
-frontend/src/styles.css + frontend/src/typography.css
+frontend/src/styles.css
+frontend/src/typography.css
+frontend/src/brand-polish.css
         ↓
 Home / Services / Contact
 ```
