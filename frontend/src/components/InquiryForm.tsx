@@ -37,6 +37,10 @@ export default function InquiryForm() {
 
   return (
     <form className="inquiry-form" onSubmit={handleSubmit} aria-busy={status === "submitting"}>
+      <label className="sr-only" aria-hidden="true">
+        Website
+        <input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
       <div className="inquiry-grid">
         <label>
           Name <span aria-hidden="true">*</span><span className="sr-only"> (required)</span>

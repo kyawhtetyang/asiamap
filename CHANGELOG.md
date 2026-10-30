@@ -2,6 +2,27 @@
 
 All notable released changes to AsiaMap are recorded here.
 
+## [Unreleased]
+
+### Security
+
+- Upgraded Next.js to `16.4.3` and refreshed the dependency lockfile after validating the resulting tree with a high-severity npm audit and production build.
+- Added same-origin and request-size guards to the inquiry endpoint.
+- Added a honeypot field to suppress simple automated inquiry spam without changing the customer-facing form flow.
+
+### Added
+
+- Generated `sitemap.xml` and linked it from `robots.txt`.
+- Added environment-controlled canonical site URL configuration.
+- Added canonical and Open Graph metadata for Home, Services, and Contact.
+- Added LocalBusiness structured data for AsiaMap.
+- Added GitHub Actions CI for dependency installation, high-severity audit, and production build verification.
+
+### Notes
+
+- The existing v0.3 brand/UI implementation is intentionally preserved; this hardening pass does not redesign the customer-facing website.
+- A future custom production domain can replace the current `asiamap.vercel.app` fallback through `NEXT_PUBLIC_SITE_URL` without code changes.
+
 ## [0.2.0] - 2026-08-18
 
 ### Added
