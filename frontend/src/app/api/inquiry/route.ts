@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const MAX_REQUEST_BYTES = 10_000;
 
 type Inquiry = {
   name?: unknown;
@@ -10,6 +11,7 @@ type Inquiry = {
   pickup?: unknown;
   destination?: unknown;
   details?: unknown;
+  website?: unknown;
 };
 
 function clean(value: unknown, maxLength: number) {
@@ -30,6 +32,16 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length") || "0");
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return NextResponse.json({ error: "Request is too large." }, { status: 413 });
+  }
+
+  const origin = request.headers.get("origin");
+  if (origin && origin !== new URL(request.url).origin) {
+    return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   const inquiryEmail = process.env.INQUIRY_TO_EMAIL;
   const from = process.env.INQUIRY_FROM_EMAIL || "AsiaMap Website <onboarding@resend.dev>";
@@ -46,6 +58,10 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  if (clean(body.website, 200)) {
+    return NextResponse.json({ ok: true });
   }
 
   const inquiry = {
