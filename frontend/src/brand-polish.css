@@ -1,0 +1,63 @@
+/* AsiaMap v0.3.2 visual polish.
+   Keep this layer intentionally small: density and Myanmar readability only. */
+
+:lang(my),
+[lang="my"] {
+  font-family: "Noto Sans Myanmar", "Myanmar Text", Pyidaungsu, "Myanmar Sangam MN", sans-serif;
+  line-height: 1.78;
+  letter-spacing: 0;
+}
+
+/* Keep the homepage confident without letting the hero dominate the full first viewport. */
+.hero {
+  min-height: 650px;
+}
+
+.hero-content {
+  padding: 92px 0 40px;
+}
+
+.hero-proof {
+  margin-top: 42px;
+}
+
+/* Tighten the information rhythm while preserving the established editorial breathing room. */
+.page-hero {
+  padding: clamp(58px, 6.5vw, 88px) 0;
+}
+
+.section {
+  padding: clamp(58px, 6.5vw, 84px) 0;
+}
+
+.home-cta-section {
+  margin-bottom: clamp(58px, 6.5vw, 84px);
+}
+
+@media (max-width: 820px) {
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero-content {
+    padding-top: 78px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    min-height: 570px;
+  }
+
+  .hero-content {
+    padding: 66px 0 30px;
+  }
+
+  .hero-proof {
+    margin-top: 34px;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+}
