@@ -22,6 +22,7 @@ export default function HomePage() {
         eyebrow={siteContent.home.eyebrow}
         title={siteContent.home.title}
         body={siteContent.home.body}
+        bodyLang="my"
         variant="home"
       >
         <div className="actions">

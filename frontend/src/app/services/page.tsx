@@ -45,7 +45,7 @@ export default function ServicesPage() {
             <article key={card.title} className="service-box">
               <div className="service-box-copy">
                 <h3>{card.title}</h3>
-                <p>{card.body}</p>
+                <p lang="my">{card.body}</p>
               </div>
               <ul className="service-box-list">
                 {card.items.map((item) => <li key={item}>{item}</li>)}
